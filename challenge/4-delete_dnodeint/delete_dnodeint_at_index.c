@@ -14,35 +14,20 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 
     if (*head == NULL)  // Empty list case
         return (-1);
-
-    // If we're deleting the head node
-    if (index == 0)
-    {
-        *head = temp->next;  // Move head to the next node
-        if (*head != NULL)
-            (*head)->prev = NULL;  // Remove reference to the old head
-        free(temp);  // Free the old head
-        return (1);
-    }
-
-    // Traverse the list to find the node at the given index
-    while (temp != NULL && i < index)
-    {
-        temp = temp->next;
-        i++;
-    }
-
-    // If we reach the end without finding the node
-    if (temp == NULL)
-        return (-1);
-
-    // Adjust pointers to bypass the node at index
-    if (temp->next != NULL)  // Not the last node
-        temp->next->prev = temp->prev;
-
-    if (temp->prev != NULL)  // Not the first node
-        temp->prev->next = temp->next;
-
-    free(temp);  // Free the node
+if (index == 0) {
+    *head = temp->next;  /* Move head to the next node */
+    if (*head != NULL)
+        (*head)->prev = NULL;  /* Remove reference to the old head */
+    free(temp);
     return (1);
 }
+
+if (temp->next != NULL) {
+    temp->next->prev = temp->prev;
+}
+
+if (temp->prev != NULL) {
+    temp->prev->next = temp->next;
+}
+
+free(temp);
