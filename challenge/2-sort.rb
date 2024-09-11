@@ -4,6 +4,6 @@
 args = ARGV
 
 # Sort numerically, skipping non-numeric inputs
-sorted = args.select { |arg| arg =~ /^-?\d+$/ }.map(&:to_i).sort.reverse
+sorted = args.select { |arg| arg =~ /^-?\d+$/ }.map(&:to_i).sort
 
 puts sorted
